@@ -7,7 +7,7 @@ namespace MechanicShop.Domain.Common.Results
 {
     public static class Result
     {
-        public static Seccess Seccess => default;
+        public static Success Success => default;
         public static Created Created => default;
         public static Deleted Deleted => default;
         public static Updated Updated => default;
@@ -90,7 +90,7 @@ namespace MechanicShop.Domain.Common.Results
             => new(errors);
     }
 
-    public readonly record struct Seccess;
+    public readonly record struct Success;
     public readonly record struct Created;
     public readonly record struct Deleted;
     public readonly record struct Updated;
