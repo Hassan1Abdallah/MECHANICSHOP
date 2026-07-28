@@ -12,6 +12,7 @@
 
   <ItemGroup>
     <Folder Include="Common\Behaviours\" />
+    <Folder Include="Features\Customers\Commands\" />
   </ItemGroup>
 
   <ItemGroup>
