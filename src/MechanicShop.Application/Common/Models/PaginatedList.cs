@@ -1,7 +1,7 @@
 ﻿
 namespace MechanicShop.Application.Common.Models
 {
-    public class PageinatedList<T>
+    public class PaginatedList<T>
     {
         public int PageNumber { get; set; }
         public int PageSize { get; set; }
