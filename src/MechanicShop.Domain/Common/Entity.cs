@@ -12,7 +12,7 @@ namespace MechanicShop.Domain.Common
             Id = id == Guid.Empty ? Guid.NewGuid() : id;
         }
 
-        public void AddDomaiEvent(DomainEvent domainEvent)
+        public void AddDomainEvent(DomainEvent domainEvent)
         {
             _domainEvents.Add(domainEvent);
         }

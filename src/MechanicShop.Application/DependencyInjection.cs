@@ -1,6 +1,7 @@
 ﻿using System.Reflection;
 
 using FluentValidation;
+using MechanicShop.Application.Common.Behaviours;
 using Microsoft.Extensions.DependencyInjection;
 
 namespace MechanicShop.Application

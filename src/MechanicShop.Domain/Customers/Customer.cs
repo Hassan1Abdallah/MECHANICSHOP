@@ -59,7 +59,7 @@ namespace MechanicShop.Domain.Customers
             return new Customer(id, name, phoneNumber, email, vehicles);
         }
 
-        public Result<Updated> Updated(string name, string phoneNumber, string email)
+        public Result<Updated> Update(string name, string phoneNumber, string email)
         {
             if (string.IsNullOrWhiteSpace(name))
             {
