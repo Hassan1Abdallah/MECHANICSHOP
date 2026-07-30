@@ -59,9 +59,9 @@ public class UpdateWorkOrderStateCommandHandler(
             workOrder.AddDomainEvent(new WorkOrderCompleted { WorkOrderId = command.WorkOrderId });
         }
 
-        await _context.SaveChangesAsync(ct);
-
         workOrder.AddDomainEvent(new WorkOrderCollectionModified());
+
+        await _context.SaveChangesAsync(ct);
 
         await _cache.RemoveByTagAsync("work-order", ct);
 

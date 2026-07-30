@@ -11,7 +11,7 @@ namespace MechanicShop.Domain.Common
         public DateTimeOffset CreatedAtUtc { get; set; }
         public string? CreatedBy { get; set; }
         public DateTimeOffset LastModifiedUtc { get; set; }
-        public string? ModifiedBy { get; set; } 
+        public string? LastModifiedBy { get; set; } 
 
 
     }
