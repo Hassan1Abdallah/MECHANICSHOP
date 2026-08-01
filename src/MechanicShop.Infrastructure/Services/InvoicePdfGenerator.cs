@@ -1,5 +1,5 @@
 ﻿using MechanicShop.Application.Common.Interfaces;
-using MechanicShop.Domain.Workorders.Billing;
+using MechanicShop.Domain.WorkOrders.Billing;
 
 using QuestPDF.Fluent;
 using QuestPDF.Helpers;

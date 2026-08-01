@@ -5,7 +5,7 @@ namespace MechanicShop.Domain.Common
     {
         public Guid Id { get; }
 
-        private readonly List<DomainEvent> _domainEvents = [];
+        public readonly List<DomainEvent> _domainEvents = [];
         protected Entity() { }
         protected Entity(Guid id) 
         {

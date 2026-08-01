@@ -43,12 +43,12 @@ public class AppDbContext(DbContextOptions<AppDbContext> options, IMediator medi
     private async Task DispatchDomainEventsAsync(CancellationToken cancellationToken)
     {
         var domainEntities = ChangeTracker.Entries()
-            .Where(e => e.Entity is Entity baseEntity && baseEntity.DomainEvents.Count != 0)
+            .Where(e => e.Entity is Entity baseEntity && baseEntity._domainEvents.Count != 0)
             .Select(e => (Entity)e.Entity)
             .ToList();
 
         var domainEvents = domainEntities
-            .SelectMany(e => e.DomainEvents)
+            .SelectMany(e => e._domainEvents)
             .ToList();
 
         foreach (var domainEvent in domainEvents)
@@ -58,7 +58,7 @@ public class AppDbContext(DbContextOptions<AppDbContext> options, IMediator medi
 
         foreach (var entity in domainEntities)
         {
-            entity.ClearDomainEvents();
+            entity.ClearDomaiEvent();
         }
     }
 }
