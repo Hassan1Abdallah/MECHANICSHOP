@@ -140,7 +140,6 @@ public sealed class WorkOrdersController(ISender sender) : ApiController
 
     [HttpPut("{workOrderId:guid}/labor")]
     [Authorize(Policy = "ManagerOnly")]
-    [Authorize(Policy = "ManagerOnly")]
     [ProducesResponseType(StatusCodes.Status204NoContent)]
     [ProducesResponseType(typeof(ProblemDetails), StatusCodes.Status404NotFound)]
     [ProducesResponseType(typeof(ProblemDetails), StatusCodes.Status400BadRequest)]
