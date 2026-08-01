@@ -11,6 +11,10 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MechanicShop.Application", 
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MechanicShop.Infrastructure", "..\MechanicShop.Infrastructure\MechanicShop.Infrastructure.csproj", "{56326825-DAC2-4F4E-AB52-0ADDB41823F2}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MechanicShop.Client", "..\MechanicShop.Client\MechanicShop.Client.csproj", "{F8F92E22-8C23-4EE3-9594-54208761F791}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MechanicShop.Contracts", "..\MechanicShop.Contracts\MechanicShop.Contracts.csproj", "{9FBE9D1C-5454-4412-894A-94F79B2FF7E0}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -33,6 +37,14 @@ Global
 		{56326825-DAC2-4F4E-AB52-0ADDB41823F2}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{56326825-DAC2-4F4E-AB52-0ADDB41823F2}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{56326825-DAC2-4F4E-AB52-0ADDB41823F2}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F8F92E22-8C23-4EE3-9594-54208761F791}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F8F92E22-8C23-4EE3-9594-54208761F791}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F8F92E22-8C23-4EE3-9594-54208761F791}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F8F92E22-8C23-4EE3-9594-54208761F791}.Release|Any CPU.Build.0 = Release|Any CPU
+		{9FBE9D1C-5454-4412-894A-94F79B2FF7E0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9FBE9D1C-5454-4412-894A-94F79B2FF7E0}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9FBE9D1C-5454-4412-894A-94F79B2FF7E0}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9FBE9D1C-5454-4412-894A-94F79B2FF7E0}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

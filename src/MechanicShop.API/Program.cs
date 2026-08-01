@@ -1,45 +1,65 @@
-﻿
+using MechanicShop.API.Components;
+using MechanicShop.Application;
+using MechanicShop.Infrastructure.Data;
+using MechanicShop.Infrastructure.RealTime;
 
+using Scalar.AspNetCore;
 
-namespace MechanicShop.API
+using Serilog;
+
+var builder = WebApplication.CreateBuilder(args);
+
+// Add services to the container.
+builder.Services.AddRazorComponents()
+    .AddInteractiveWebAssemblyComponents();
+
+builder.Services
+    .AddPresentation(builder.Configuration)
+    .AddApplication()
+    .AddInfrastructure(builder.Configuration);
+
+builder.Host.UseSerilog((context, loggerConfig) =>
+    loggerConfig.ReadFrom.Configuration(context.Configuration));
+
+var app = builder.Build();
+
+// Configure the HTTP request pipeline.
+if (app.Environment.IsDevelopment())
 {
-    public class Program
+    app.MapOpenApi();
+
+    app.UseSwaggerUI(options =>
     {
-        public static void Main(string[] args)
-        {
-            var builder = WebApplication.CreateBuilder(args);
+        options.SwaggerEndpoint("/openapi/v1.json", "MechanicShop API V1");
 
-            // Add services to the container.
+        options.EnableDeepLinking();
+        options.DisplayRequestDuration();
+        options.EnableFilter();
+    });
 
-            builder.Services.AddControllers();
-            // Learn more about configuring OpenAPI at https://aka.ms/aspnet/openapi
-            //builder.Services.AddOpenApi();
-            builder.Services.AddEndpointsApiExplorer();
-            builder.Services.AddSwaggerGen();
+    app.MapScalarApiReference();
 
+    await app.InitialiseDatabaseAsync();
 
-
-
-
-            var app = builder.Build();
-
-            // Configure the HTTP request pipeline.
-            if (app.Environment.IsDevelopment())
-            {
-                //app.MapOpenApi();
-                app.UseSwagger();
-                app.UseSwaggerUI();
-                //app.MapScalarApiReference();
-            }
-
-            app.UseHttpsRedirection();
-
-            app.UseAuthorization();
-
-
-            app.MapControllers();
-
-            app.Run();
-        }
-    }
+    app.UseWebAssemblyDebugging();
 }
+else
+{
+    app.UseHsts();
+}
+
+app.UseCoreMiddlewares(builder.Configuration);
+
+app.MapControllers();
+
+app.UseAntiforgery();
+
+app.MapStaticAssets();
+
+app.MapRazorComponents<App>().AllowAnonymous()
+    .AddInteractiveWebAssemblyRenderMode()
+    /*.AddAdditionalAssemblies(typeof(MechanicShop.Client._Imports).Assembly)*/;
+
+app.MapHub<WorkOrderHub>("/hubs/workorders");
+
+app.Run();
