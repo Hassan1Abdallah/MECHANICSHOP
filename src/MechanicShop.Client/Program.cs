@@ -1,36 +1,34 @@
-using MechanicShop.Client.Components;
+using Blazored.LocalStorage;
 
-namespace MechanicShop.Client
-{
-    public class Program
-    {
-        public static void Main(string[] args)
-        {
-            var builder = WebApplication.CreateBuilder(args);
+using MechanicShop.Client.Hubs;
+using MechanicShop.Client.Identity;
+using MechanicShop.Client.Services;
 
-            // Add services to the container.
-            builder.Services.AddRazorComponents()
-                .AddInteractiveServerComponents();
+using Microsoft.AspNetCore.Components.Authorization;
+using Microsoft.AspNetCore.Components.WebAssembly.Hosting;
 
-            var app = builder.Build();
+var builder = WebAssemblyHostBuilder.CreateDefault(args);
 
-            // Configure the HTTP request pipeline.
-            if (!app.Environment.IsDevelopment())
-            {
-                app.UseExceptionHandler("/Error");
-                // The default HSTS value is 30 days. You may want to change this for production scenarios, see https://aka.ms/aspnetcore-hsts.
-                app.UseHsts();
-            }
+builder.Services.AddAuthorizationCore();
 
-            app.UseHttpsRedirection();
+builder.Services.AddScoped<AuthenticationStateProvider, CustomAuthenticationStateProvider>();
 
-            app.UseAntiforgery();
+builder.Services.AddScoped(
+    sp => (IAccountManagement)sp.GetRequiredService<AuthenticationStateProvider>());
 
-            app.MapStaticAssets();
-            app.MapRazorComponents<App>()
-                .AddInteractiveServerRenderMode();
+builder.Services.AddTransient<BearerTokenHandler>();
 
-            app.Run();
-        }
-    }
-}
+builder.Services.AddScoped<TimeZoneService>();
+
+builder.Services.AddScoped<WorkOrderHubClient>();
+
+builder.Services.AddHttpClient(
+    "MechanicShopClient",
+    client => client.BaseAddress = new Uri(builder.HostEnvironment.BaseAddress))
+    .AddHttpMessageHandler<BearerTokenHandler>();
+
+builder.Services.AddBlazoredLocalStorage();
+
+builder.Services.AddScoped<ServiceApi>();
+
+await builder.Build().RunAsync();

@@ -143,6 +143,12 @@ public class WorkOrdersControllerTests(WebAppFactory webAppFactory)
 
         var response = await _client.GetAsync($"/api/v1.0/workorders/{nonExistentId}");
 
+        if (response.StatusCode == HttpStatusCode.InternalServerError)
+        {
+            var errorContent = await response.Content.ReadAsStringAsync();
+            throw new Exception($" Server crashed with 500! Details: {errorContent}");
+        }
+
         Assert.Equal(HttpStatusCode.NotFound, response.StatusCode);
     }
 

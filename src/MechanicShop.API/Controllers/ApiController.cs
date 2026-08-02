@@ -8,9 +8,9 @@ namespace MechanicShop.API.Controllers;
 [ApiController]
 public class ApiController : ControllerBase
 {
-    protected ActionResult Problem(List<Error> errors)
+    protected ActionResult Problem(List<Error>? errors)
     {
-        if (errors.Count is 0)
+        if (errors is null || errors.Count is 0)
         {
             return Problem();
         }

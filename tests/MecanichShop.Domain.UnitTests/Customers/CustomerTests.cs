@@ -76,7 +76,7 @@ public class CustomerTests
     {
         var customer = CustomerFactory.CreateCustomer().Value;
 
-        var result = customer.Update("Updated Name", "updated@email.com", "1234567890");
+        var result = customer.Update(name: "Updated Name", phoneNumber: "01012345678", email: "updated@email.com");
 
         Assert.True(result.IsSuccess);
         Assert.Equal(Result.Updated, result.Value);

@@ -58,7 +58,7 @@ app.MapStaticAssets();
 
 app.MapRazorComponents<App>().AllowAnonymous()
     .AddInteractiveWebAssemblyRenderMode()
-    /*.AddAdditionalAssemblies(typeof(MechanicShop.Client._Imports).Assembly)*/;
+    .AddAdditionalAssemblies(typeof(MechanicShop.Client._Imports).Assembly);
 
 app.MapHub<WorkOrderHub>("/hubs/workorders");
 
