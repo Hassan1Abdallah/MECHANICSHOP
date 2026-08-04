@@ -1,27 +1,33 @@
-﻿<Project Sdk="Microsoft.NET.Sdk.Web">
+﻿
+<Project Sdk="Microsoft.NET.Sdk.BlazorWebAssembly">
 
-  <PropertyGroup>
-    <TargetFramework>net9.0</TargetFramework>
-    <Nullable>enable</Nullable>
-    <ImplicitUsings>enable</ImplicitUsings>
-  </PropertyGroup>
+  
 
   <ItemGroup>
-	  <PackageReference Include="Blazored.LocalStorage" Version="4.5.0" />
-	  <PackageReference Include="Humanizer" Version="3.0.10" />
-	  <PackageReference Include="Intersoft.Crosslight" Version="7.0.5000.1469-experimental" />
-	  <PackageReference Include="Microsoft.AspNet.SignalR.Client" Version="2.4.3" />
-	  <PackageReference Include="Microsoft.AspNetCore.Components.WebAssembly" Version="9.0.18" />
-	  <PackageReference Include="Microsoft.AspNetCore.Components.WebAssembly.Authentication" Version="9.0.18" />
-	  <PackageReference Include="Microsoft.Extensions.Http" Version="9.0.18" />
-	  <PackageReference Include="Microsoft.AspNetCore.SignalR.Client" Version="9.0.18" />
-	  <PackageReference Include="System.IdentityModel.Tokens.Jwt" Version="8.22.0" />
+	  <PackageReference Include="Blazored.LocalStorage" />
+	  <PackageReference Include="Humanizer" />
+	  <PackageReference Include="Microsoft.AspNetCore.Components.WebAssembly" />
+	  <PackageReference Include="Microsoft.AspNetCore.Components.WebAssembly.Authentication" />
+	  <PackageReference Include="Microsoft.Extensions.Http" />
+	  <PackageReference Include="Microsoft.AspNetCore.SignalR.Client" />
+	  <PackageReference Include="System.IdentityModel.Tokens.Jwt" />
   </ItemGroup>
 
   
 
   <ItemGroup>
     <ProjectReference Include="..\MechanicShop.Contracts\MechanicShop.Contracts.csproj" />
+  </ItemGroup>
+
+  
+
+  <ItemGroup>
+    <Content Update="wwwroot\appsettings.Development.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Update="wwwroot\appsettings.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
   </ItemGroup>
 
 </Project>
